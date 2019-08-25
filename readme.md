@@ -17,11 +17,10 @@ In order to use Serverless on AWS you will need an AWS Account. If you don’t a
 ### Setup
 
 1. Download and go to downloaded directory.
-2. Install global and local dependencies:
+2. Install global serverless dependencies:
 
 ```sh
 npm install -g serverless
-npm install
 ```
 
 3. Rename `env.configs.yml.example` file to `env.configs.yml` and fill it wit values:
