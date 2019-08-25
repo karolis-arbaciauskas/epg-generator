@@ -36,4 +36,4 @@ functions:
       - schedule: cron(0 02 * * ? *)
 
 resources:
-  - ${file(Resources/s3-bucket.yml)}
+  - ${file(resources/s3-bucket.yml)}

@@ -33,7 +33,6 @@
     <Content Include="appsettings.json">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Folder Include="Resources\" />
     <Folder Include="S3Uploader\" />
     <Folder Include="HttpFactoryClient\" />
   </ItemGroup>
