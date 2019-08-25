@@ -14,16 +14,17 @@ In order to use Serverless on AWS you will need an AWS Account. If you don’t a
 
 - [For detailed information of the aws configure check out the Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html?linkCode=w61&imprToken=rIpUBadxcvuX734XP4x85Q&slotNum=1)
 
-### Setup
-
-1. Clone repository and go to downloaded directory.
-2. Install global serverless dependencies:
+- Install global serverless dependencies:
 
 ```sh
 npm install -g serverless
 ```
 
-3. Rename `env.configs.yml.example` file to `env.configs.yml` and fill it wit values:
+### Setup
+
+1. Clone repository and go to downloaded directory.
+
+2. Rename `env.configs.yml.example` file to `env.configs.yml` and fill it wit values:
 
 ```yaml
 # Targeted deployment stage (you can leave at it is)
@@ -38,7 +39,7 @@ filename: Guide.xml
 customerExternalIpAddress: 111.111.11.11
 ```
 
-4. Build application.
+3. Build application.
 
 For Unix use command:
 
