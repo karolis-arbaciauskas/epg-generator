@@ -4,6 +4,6 @@ namespace awscsharp.Configuration
 {
     public interface ILambdaConfiguration
     {
-        IConfiguration Configuration { get; }
+        IConfigurationRoot Configuration { get; }
     }
 }

@@ -1,0 +1,47 @@
+Resources:
+  AttachmentsBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: ${self:custom.bucket}
+      CorsConfiguration:
+        CorsRules:
+          - AllowedOrigins:
+              - "*"
+            AllowedHeaders:
+              - "*"
+            AllowedMethods:
+              - GET
+              - PUT
+              - POST
+              - DELETE
+              - HEAD
+            MaxAge: 3000
+  BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      PolicyDocument:
+        Version: "2012-10-17"
+        Id: S3AttachmentsBucketPolicyId1
+        Statement:
+          - Sid: IPAllow
+            Effect: Allow
+            Principal: "*"
+            Action: s3:*
+            Resource:
+              Fn::Join: ["", [Fn::GetAtt: [AttachmentsBucket, Arn], "/*"]]
+            Condition:
+              IpAddress:
+                aws:SourceIp: ${self:custom.customerExternalIpAddress}
+      Bucket:
+        Ref: AttachmentsBucket
+
+Outputs:
+  GeneratedEpgLink:
+    Value:
+      Fn::Join:
+        - ""
+        - - "https://"
+          - Fn::GetAtt: [AttachmentsBucket, DomainName]
+          - "/"
+          - ${self:custom.filename}
+    Description: Link of generated EPG xml

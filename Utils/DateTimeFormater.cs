@@ -3,12 +3,12 @@ namespace awscsharp.Utils
 {
     public static class DateTimeFormater
     {
-        public static string TimestampToString(string timestamp)
+        public static string TimestampToString(int timestamp)
         {
-            double num = double.Parse(timestamp);
-
             DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-            dtDateTime = dtDateTime.AddSeconds(num).ToLocalTime();
+            dtDateTime = dtDateTime.AddSeconds(timestamp);
+            //TimeZoneInfo lithuaniaTimezone = TimeZoneInfo.FindSystemTimeZoneById("Europe/Vilnius");
+            //DateTime lithuaniaTime = TimeZoneInfo.ConvertTimeFromUtc(dtDateTime, lithuaniaTimezone);
             return dtDateTime.ToString("yyyyMMddHHmmss zzz").Replace(":", "");
         }
     }

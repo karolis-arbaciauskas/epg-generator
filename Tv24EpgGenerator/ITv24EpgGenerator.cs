@@ -2,8 +2,8 @@
 
 namespace awscsharp.Tv24EpgGenerator
 {
-    public interface ITv24EpgGenerator
-    {
-        Task GenerateTVProgram();
-    }
+  public interface ITv24EpgGenerator
+  {
+    Task GenerateTVProgram();
+  }
 }
