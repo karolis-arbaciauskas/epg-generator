@@ -8,6 +8,8 @@ In order to use Serverless on AWS you will need an AWS Account. If you don’t a
 
 ### Prerequest
 
+- [Install .NET core](https://dotnet.microsoft.com/download)
+
 - [Install the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
 
 - [For detailed information of the aws configure check out the Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html?linkCode=w61&imprToken=rIpUBadxcvuX734XP4x85Q&slotNum=1)
