@@ -1,6 +1,6 @@
 # EPG generator
 
-Simple EPG generator wich runs on AWS lambda. Infrastructure are deployable trough [serverless framework](https://serverless.com).
+Simple EPG generator wich runs on AWS (Amazon web services) lambda. Infrastructure are deployable trough [serverless framework](https://serverless.com).
 
 Serverless Framework enables you to seemlessly deploy applications to AWS. However, this does require AWS Credentials to do so. There are a few ways to supply your credentials, preferred approach it to use the AWS CLI to configure details.
 
@@ -47,7 +47,7 @@ For Unix use command:
 ./build.sh
 ```
 
-For windows:
+For Windows:
 
 ```cdm
 build.cmd
@@ -55,19 +55,19 @@ build.cmd
 
 ### Deploy
 
-1. Deploy epg generator to amazon.
+1. Deploy epg generator service to AWS.
 
 ```
 sls deploy
 ```
 
-2. Invoke epg generator function for the first time (This step only needed for the first time, later script will run automaticly at 02:00 AM).
+2. Invoke epg generator service for the first time (This step only needed for the first time, later script will run automaticly at 02:00 AM) with command:
 
 ```
 sls invoke -f epgGenerator
 ```
 
-3. Check if epg generator run succesfully.
+3. Check if epg generator run succesfully:
 
 ```
 sls logs -f epgGenerator
@@ -82,8 +82,10 @@ END RequestId: 2f5c6c14-379d-4a46-8311-240c5ca62423
 REPORT RequestId: 2f5c6c14-379d-4a46-8311-240c5ca62423	Duration: 35410.07 ms	Billed Duration: 35500 ms 	Memory Size: 1024 MB	Max Memory Used: 204 MB
 ```
 
+At this time you succesfully deployed service to AWS
+
 ### Find your generated epg file link
 
-Login to you AWS account. Go to s3 service and find your file.
+Login to you AWS account. Go to S3 service and look for your bucket (you should look for a bucket with name you wrote in environment file).
 
 ![aws](media/filename.png)
