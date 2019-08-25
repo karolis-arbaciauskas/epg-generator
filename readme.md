@@ -80,6 +80,8 @@ END RequestId: 2f5c6c14-379d-4a46-8311-240c5ca62423
 REPORT RequestId: 2f5c6c14-379d-4a46-8311-240c5ca62423	Duration: 35410.07 ms	Billed Duration: 35500 ms 	Memory Size: 1024 MB	Max Memory Used: 204 MB
 ```
 
-### Find your generated epg file link:
+### Find your generated epg file link
+
+Login to you AWS account. Go to s3 service and find your file.
 
 ![aws](media/filename.png)
