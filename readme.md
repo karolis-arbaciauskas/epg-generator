@@ -1,6 +1,6 @@
 # EPG generator
 
-Simple EPG generator wich runs on AWS lambda. Infrastructure is deployable trough [serverless framework](https://serverless.com).
+Simple EPG generator wich runs on AWS lambda. Infrastructure are deployable trough [serverless framework](https://serverless.com).
 
 Serverless Framework enables you to seemlessly deploy applications to AWS. However, this does require AWS Credentials to do so. There are a few ways to supply your credentials, preferred approach it to use the AWS CLI to configure details.
 
