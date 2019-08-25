@@ -16,7 +16,7 @@ In order to use Serverless on AWS you will need an AWS Account. If you don’t a
 
 ### Setup
 
-1. Download and go to downloaded directory.
+1. Clone repository and go to downloaded directory.
 2. Install global serverless dependencies:
 
 ```sh
