@@ -1,6 +1,6 @@
 # EPG generator
 
-Simple EPG generator wich runs on AWS lambda. Infrastructure are deployable trough [serverless framework](https://serverless.com).
+Simple EPG generator (at this time it only can parse tv guides from tv24.lt website) which runs on AWS (Amazon web services) lambda. Infrastructure are deployable trough [serverless framework](https://serverless.com).
 
 Serverless Framework enables you to seemlessly deploy applications to AWS. However, this does require AWS Credentials to do so. There are a few ways to supply your credentials, preferred approach it to use the AWS CLI to configure details.
 
@@ -14,16 +14,17 @@ In order to use Serverless on AWS you will need an AWS Account. If you don’t a
 
 - [For detailed information of the aws configure check out the Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html?linkCode=w61&imprToken=rIpUBadxcvuX734XP4x85Q&slotNum=1)
 
-### Setup
-
-1. Download and go to downloaded directory.
-2. Install global serverless dependencies:
+- Install global serverless dependencies:
 
 ```sh
 npm install -g serverless
 ```
 
-3. Rename `env.configs.yml.example` file to `env.configs.yml` and fill it wit values:
+### Setup
+
+1. Clone repository and go to downloaded directory.
+
+2. Rename `env.configs.yml.example` file to `env.configs.yml` and fill it wit values:
 
 ```yaml
 # Targeted deployment stage (you can leave at it is)
@@ -38,7 +39,7 @@ filename: Guide.xml
 customerExternalIpAddress: 111.111.11.11
 ```
 
-4. Build application.
+3. Build application.
 
 For Unix use command:
 
@@ -46,7 +47,7 @@ For Unix use command:
 ./build.sh
 ```
 
-For windows:
+For Windows:
 
 ```cdm
 build.cmd
@@ -54,19 +55,19 @@ build.cmd
 
 ### Deploy
 
-1. Deploy epg generator to amazon.
+1. Deploy epg generator service to AWS.
 
 ```
 sls deploy
 ```
 
-2. Invoke epg generator function for the first time (This step only needed for the first time, later script will run automaticly at 02:00 AM).
+2. Invoke epg generator service for the first time (This step only needed for the first time, later script will run automaticly at 02:00 AM) with command:
 
 ```
 sls invoke -f epgGenerator
 ```
 
-3. Check if epg generator run succesfully.
+3. Check if epg generator run succesfully:
 
 ```
 sls logs -f epgGenerator
@@ -81,8 +82,10 @@ END RequestId: 2f5c6c14-379d-4a46-8311-240c5ca62423
 REPORT RequestId: 2f5c6c14-379d-4a46-8311-240c5ca62423	Duration: 35410.07 ms	Billed Duration: 35500 ms 	Memory Size: 1024 MB	Max Memory Used: 204 MB
 ```
 
+At this time you succesfully deployed service to AWS
+
 ### Find your generated epg file link
 
-Login to you AWS account. Go to s3 service and find your file.
+Login to you AWS account. Go to S3 service and look for your bucket (you should look for a bucket with name you wrote in environment file).
 
 ![aws](media/filename.png)
