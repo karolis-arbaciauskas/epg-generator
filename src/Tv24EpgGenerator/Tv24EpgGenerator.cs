@@ -65,13 +65,18 @@ namespace awscsharp.Tv24EpgGenerator
                             {
                                 Channel = record.Channel.Slug,
                                 Title = record.Title,
-                                Description = record.Description,
+                                Description = record.Description_long,
                                 ProgrammeImage = record.Image,
                                 StartTime = DateTimeFormater.TimestampToString(record.Start_unix),
                                 EndTime = DateTimeFormater.TimestampToString(record.Stop_unix),
                                 Episode = record.Ep_nr,
                                 Country = record.Country,
-                                Year = record.Year
+                                Year = record.Year,
+                                Credits = new Credit
+                                {
+                                    Actor = record.Cast,
+                                    Director = record.Director
+                                }
                             });
                         }
 

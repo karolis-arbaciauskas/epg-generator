@@ -29,6 +29,10 @@ namespace awscsharp.Tv24EpgGenerator
                     new XElement("desc", new XAttribute("lang", "lt"), x.Description),
                     new XElement("category", new XAttribute("lang", "lt"), x.Category),
                     new XElement("episode-num", new XAttribute("system", "onscreen"), x.Episode),
+                    new XElement("credits",
+                        new XElement("director", x.Credits?.Director),
+                        new XElement("actor", x.Credits?.Actor)
+                    ),
                     new XElement("country", x.Country),
                     x.Year > 0 ? new XElement("date", x.Year) : null,
                     !string.IsNullOrEmpty(x.ProgrammeImage) ? new XElement("icon", new XAttribute("src", x.ProgrammeImage)) : null
