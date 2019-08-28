@@ -1,3 +1,5 @@
+org: acidfabric
+app: epg
 service: epg
 
 provider:
@@ -33,7 +35,7 @@ functions:
     package:
       artifact: bin/release/netcoreapp2.1/epg.zip
     events:
-      - schedule: cron(0 02 * * ? *)
+      - schedule: cron(0 04 * * ? *)
 
 resources:
   - ${file(resources/s3-bucket.yml)}
