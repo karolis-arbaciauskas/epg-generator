@@ -15,11 +15,11 @@ namespace awscsharp.HttpFactoryClient
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<T> GenerateStreamFromSource<T>(string requestUri, CancellationToken cancellationToken)
+        public async Task<T> GenerateStreamFromSource<T>(string requestUri)
         {
             using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUri))
             using (HttpClient client = _httpClientFactory.CreateClient())
-            using (HttpResponseMessage response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken))
+            using (HttpResponseMessage response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead))
             {
                 string content;
                 using (Stream stream = await response.Content.ReadAsStreamAsync())

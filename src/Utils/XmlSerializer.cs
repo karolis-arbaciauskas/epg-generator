@@ -14,7 +14,7 @@ namespace awscsharp.Utils
                 StringBuilder builder = new StringBuilder();
                 using (TextWriter writer = new StringWriterUtf8(builder))
                 {
-                    xmlDocument.Save(writer);
+                    xmlDocument.Save(writer, SaveOptions.DisableFormatting);
                     return builder.ToString();
                 }
             }

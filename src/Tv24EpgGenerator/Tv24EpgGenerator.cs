@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -42,46 +43,36 @@ namespace awscsharp.Tv24EpgGenerator
             var channelsList = new List<ChannelOutput>();
             var recordsList = new List<TvProgramOutput>();
 
-            // TODO: implement timout
-            using (CancellationTokenSource source = new CancellationTokenSource())
+            IEnumerable<RootObject> tvGuidesList = await GetTvGuideInParallel<RootObject>(_channelsGroups);
+
+            foreach(RootObject tvGuide in tvGuidesList)
             {
-                foreach (string program in _channelsGroups)
+                foreach (TvProgramInput record in tvGuide.Schedule.Programme)
                 {
-                    DateTime date = DateTime.Today;
-
-                    for (int i = 0; i < _numOfDays; i++)
+                    channelsList.Add(new ChannelOutput
                     {
-                        RootObject deserializeInputFromStreamSource = await _httpClientFactory.GenerateStreamFromSource<RootObject>($"{_baseUrl}/{program}/{date.ToString("dd-MM-yyyy")}", source.Token);
-                        foreach (TvProgramInput record in deserializeInputFromStreamSource.Schedule.Programme)
+                        Id = record.Channel.Slug,
+                        DisplayName = record.Channel.Name,
+                        Logo = $"{_mediaGalery}/{record.Channel.Logo_64}"
+                    });
+
+                    recordsList.Add(new TvProgramOutput
+                    {
+                        Channel = record.Channel.Slug,
+                        Title = record.Title,
+                        Description = record.Description_long,
+                        ProgrammeImage = record.Image,
+                        StartTime = DateTimeFormater.TimestampToString(record.Start_unix),
+                        EndTime = DateTimeFormater.TimestampToString(record.Stop_unix),
+                        Episode = record.Ep_nr,
+                        Country = record.Country,
+                        Year = record.Year,
+                        Credits = new Credit
                         {
-                            channelsList.Add(new ChannelOutput
-                            {
-                                Id = record.Channel.Slug,
-                                DisplayName = record.Channel.Name,
-                                Logo = $"{_mediaGalery}/{record.Channel.Logo_64}"
-                            });
-
-                            recordsList.Add(new TvProgramOutput
-                            {
-                                Channel = record.Channel.Slug,
-                                Title = record.Title,
-                                Description = record.Description_long,
-                                ProgrammeImage = record.Image,
-                                StartTime = DateTimeFormater.TimestampToString(record.Start_unix),
-                                EndTime = DateTimeFormater.TimestampToString(record.Stop_unix),
-                                Episode = record.Ep_nr,
-                                Country = record.Country,
-                                Year = record.Year,
-                                Credits = new Credit
-                                {
-                                    Actor = record.Cast,
-                                    Director = record.Director
-                                }
-                            });
+                            Actor = record.Cast,
+                            Director = record.Director
                         }
-
-                        date = date.AddDays(1);
-                    }
+                    });
                 }
             }
 
@@ -98,6 +89,21 @@ namespace awscsharp.Tv24EpgGenerator
             );
 
             Console.WriteLine("RunTime " + elapsedTime);
+        }
+
+        private async Task<IEnumerable<T>> GetTvGuideInParallel<T>(IEnumerable<string> channelsGroups)
+        {
+            var tvGuides = new List<T>();
+            DateTime date = DateTime.Today;
+
+            for (int i = 0; i < _numOfDays; i++)
+            {
+                var tasks = channelsGroups.Select(channelsGroup => _httpClientFactory.GenerateStreamFromSource<T>($"{_baseUrl}/{channelsGroup}/{date.ToString("dd-MM-yyyy")}"));
+                tvGuides.AddRange(await Task.WhenAll(tasks));
+                date = date.AddDays(1);
+            }
+
+            return tvGuides;
         }
     }
 }

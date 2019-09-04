@@ -5,6 +5,6 @@ namespace awscsharp.HttpFactoryClient
 {
     public interface IHttpFactoryClient
     {
-        Task<T> GenerateStreamFromSource<T>(string requestUri, CancellationToken cancellationToken);
+        Task<T> GenerateStreamFromSource<T>(string requestUri);
     }
 }

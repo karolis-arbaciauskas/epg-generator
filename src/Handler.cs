@@ -15,7 +15,8 @@ namespace AwsDotnetCsharp
         public static void Program()
         {
             var services = ConfigureServices(LambdaConfiguration.Configuration);
-            var serviceProvider = services.BuildServiceProvider();
+            var serviceProvider = services
+                .BuildServiceProvider();
             serviceProvider.GetService<Service>().Run();
 
         }
@@ -27,11 +28,11 @@ namespace AwsDotnetCsharp
                 .Configure<Tv24Config>(options => root.GetSection("tv24Config").Bind(options))
                 .Configure<AwsConfig>(options => root.GetSection("AwsConfig").Bind(options))
                 .AddDefaultAWSOptions(root.GetAWSOptions())
-                .AddAWSService<IAmazonS3>()
-                .AddHttpClient()
                 .AddTransient<IHttpFactoryClient, HttpFactoryClient>()
+                .AddAWSService<IAmazonS3>()
                 .AddTransient<ITv24EpgGenerator, Tv24EpgGenerator>()
                 .AddTransient<IS3Uploader, S3Uploader>()
+                .AddHttpClient()
                 .AddTransient<Service>();
 
             return services;
