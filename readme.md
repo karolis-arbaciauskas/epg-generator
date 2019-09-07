@@ -35,7 +35,7 @@ region: eu-central-1
 bucket: my-custom-epg-bucket-name
 # Generated EPG file name
 filename: Guide.xml
-# You IPv4 address. You can find it here: https://whatismyipaddress.com/
+# Your IPv4 address. You can find it here: https://whatismyipaddress.com/
 customerExternalIpAddress: 111.111.11.11
 ```
 
@@ -86,6 +86,6 @@ At this time you succesfully deployed service to AWS
 
 ### Find your generated epg file link
 
-Login to you AWS account. Go to S3 service and look for your bucket (you should look for a bucket with name you wrote in environment file).
+Login to your AWS account. Go to S3 service and look for your bucket (you should look for a bucket with name you wrote in environment file).
 
 ![aws](media/filename.png)
