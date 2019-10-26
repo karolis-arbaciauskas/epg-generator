@@ -17,6 +17,6 @@ jobs:
 #       - name: Restore dotnet packages
 #         run: dotnet restore src/aws-csharp.csproj
       - name: ls files
-        run: ls -la ~
+        run: ls -la ~/.dotnet
 #       - name: Package for lambda
 #         run: ~/.dotnet/tools/dotnet-lambda package --project-location src --configuration release --framework netcoreapp2.1 --output-package bin/release/netcoreapp2.1/epg.zip
