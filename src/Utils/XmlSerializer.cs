@@ -11,7 +11,7 @@ namespace awscsharp.Utils
         {
             public static string Convert(XDocument xmlDocument)
             {
-                StringBuilder builder = new StringBuilder();
+                var builder = new StringBuilder();
                 using (TextWriter writer = new StringWriterUtf8(builder))
                 {
                     xmlDocument.Save(writer, SaveOptions.DisableFormatting);
@@ -20,7 +20,7 @@ namespace awscsharp.Utils
             }
         }
 
-        public class StringWriterUtf8 : StringWriter
+        private class StringWriterUtf8 : StringWriter
         {
             public StringWriterUtf8(StringBuilder sb) : base(sb)
             {

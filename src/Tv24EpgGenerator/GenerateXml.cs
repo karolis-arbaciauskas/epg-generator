@@ -35,7 +35,9 @@ namespace awscsharp.Tv24EpgGenerator
                     ),
                     new XElement("country", x.Country),
                     x.Year > 0 ? new XElement("date", x.Year) : null,
-                    !string.IsNullOrEmpty(x.ProgrammeImage) ? new XElement("icon", new XAttribute("src", x.ProgrammeImage)) : null
+                    !string.IsNullOrEmpty(x.ProgrammeImage)
+                        ? new XElement("icon", new XAttribute("src", x.ProgrammeImage)) 
+                        : null
                 ))));
         }
     }

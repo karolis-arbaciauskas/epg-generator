@@ -8,8 +8,8 @@ namespace awscsharp.Models
         [JsonProperty("baseUrl")]
         public string BaseUrl { get; set; }
 
-        [JsonProperty("mediaGalery")]
-        public string MediaGalery { get; set; }
+        [JsonProperty("mediaGallery")]
+        public string MediaGallery { get; set; }
 
         [JsonProperty("groups")]
         public string[] Groups { get; set; }

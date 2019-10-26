@@ -17,16 +17,16 @@ namespace awscsharp.HttpFactoryClient
 
         public async Task<T> GenerateStreamFromSource<T>(string requestUri)
         {
-            using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUri))
-            using (HttpClient client = _httpClientFactory.CreateClient())
-            using (HttpResponseMessage response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead))
+            using (var request = new HttpRequestMessage(HttpMethod.Get, requestUri))
+            using (var client = _httpClientFactory.CreateClient())
+            using (var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead))
             {
                 string content;
-                using (Stream stream = await response.Content.ReadAsStreamAsync())
+                using (var stream = await response.Content.ReadAsStreamAsync())
                 {
                     if (response.IsSuccessStatusCode)
                     {
-                        T deserializeInputFromStream = DeserializeJsonFromStream<T>(stream);
+                        var deserializeInputFromStream = DeserializeJsonFromStream<T>(stream);
                         return deserializeInputFromStream;
                     }
 
@@ -41,7 +41,7 @@ namespace awscsharp.HttpFactoryClient
             }
         }
 
-        private T DeserializeJsonFromStream<T>(Stream stream)
+        private static T DeserializeJsonFromStream<T>(Stream stream)
         {
             if (stream == null || stream.CanRead == false)
             {
@@ -62,12 +62,10 @@ namespace awscsharp.HttpFactoryClient
         {
             string content = null;
 
-            if (stream != null)
+            if (stream == null) return content;
+            using (var streamReader = new StreamReader(stream))
             {
-                using (var streamReader = new StreamReader(stream))
-                {
-                    content = await streamReader.ReadToEndAsync();
-                }
+                content = await streamReader.ReadToEndAsync();
             }
 
             return content;
