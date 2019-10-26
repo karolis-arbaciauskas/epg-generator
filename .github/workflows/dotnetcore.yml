@@ -4,16 +4,17 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 2.2.108
-    - name: Restore dotnet packages
-      run: dotnet restore src/aws-csharp.csproj
-    - name: Package for lambda
-      run: dotnet lambda package --project-location src --configuration release --framework netcoreapp2.1 --output-package bin/release/netcoreapp2.1/epg.zip
+      - uses: actions/checkout@v1
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 2.2.108
+      - name: Install dotnet lambda dependency
+        run: dotnet new --install Amazon.Lambda.Templates::3.9.0
+      - name: Restore dotnet packages
+        run: dotnet restore src/aws-csharp.csproj
+      - name: Package for lambda
+        run: dotnet lambda package --project-location src --configuration release --framework netcoreapp2.1 --output-package bin/release/netcoreapp2.1/epg.zip
