@@ -1,4 +1,4 @@
-name: TV guide pipeline
+name: Build
 
 on:
   push:
