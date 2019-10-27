@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  build and deploy lambda:
+  build-and-deploy-lambda:
     runs-on: ubuntu-latest
 
     steps:
