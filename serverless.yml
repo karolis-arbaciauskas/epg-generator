@@ -21,9 +21,9 @@ provider:
 custom:
   stage: ${file(env.configs.yml):stage, self:provider.stage}
   region: ${file(env.configs.yml):region, self:provider.region}
-  bucket: ${self:custom.stage}-${file(env.configs.yml):bucket}
-  filename: ${file(env.configs.yml):filename}.xml
-  customerExternalIpAddress: ${file(env.configs.yml):customerExternalIpAddress}/24
+  bucket: ${self:custom.stage}-${file(env.configs.yml):bucket, env:bucket}
+  filename: ${file(env.configs.yml):filename, 'Guide'}.xml
+  customerExternalIpAddress: ${file(env.configs.yml):customerExternalIpAddress, env:customerExternalIpAddress}/24
 
 package:
   individually: true

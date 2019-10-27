@@ -42,3 +42,6 @@ jobs:
           name: epg-package
       - name: Publish
         run: sls deploy
+        env:
+          bucket: ${{ secrets.BUCKET_NAME }}
+          customerExternalIpAddress: ${{ secrets.CUSTOMER_EXTERNAL_IP_ADDRESS }}
