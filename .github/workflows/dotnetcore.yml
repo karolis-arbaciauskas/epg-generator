@@ -13,14 +13,14 @@ jobs:
         with:
           dotnet-version: 2.2.108
       - name: Install dotnet lambda dependency
-        run: dotnet new --install Amazon.Lambda.Templates::3.9.0
-#       - name: Restore dotnet packages
-#         run: dotnet restore src/aws-csharp.csproj
+        run: dotnet new --install Amazon.Lambda.Templates::3.9.0 && export PATH="$PATH:/root/.dotnet/tools"
+      - name: Restore dotnet packages
+        run: dotnet restore src/aws-csharp.csproj
       - name: ls files 0
-        run: ls -la /opt/hostedtoolcache/dncs/2.2.108/x64
-      - name: ls files 1
-        run: ls -la /home/runner/
-      - name: ls files 2
-        run: ls -la /home/runner/.templateengine/
-#       - name: Package for lambda
-#         run: dotnet-lambda package --project-location src --configuration release --framework netcoreapp2.1 --output-package bin/release/netcoreapp2.1/epg.zip
+        run: ls -la ~/.dotnet/tools
+#       - name: ls files 1
+#         run: ls -la /home/runner/
+#       - name: ls files 2
+#         run: ls -la /home/runner/.templateengine/
+      - name: Package for lambda
+        run: dotnet-lambda package --project-location src --configuration release --framework netcoreapp2.1 --output-package bin/release/netcoreapp2.1/epg.zip
