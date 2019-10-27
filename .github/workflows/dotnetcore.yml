@@ -13,7 +13,7 @@ jobs:
         with:
           dotnet-version: 2.2.108
       - name: Install Amazon.Lambda.Tools
-        run: dotnet tool install --tool-path ~/.dotnetamazon -g Amazon.Lambda.Tools # && export PATH="$PATH:/root/.dotnet/tools"
+        run: dotnet tool install --tool-path ~/.dotnetamazon Amazon.Lambda.Tools # && export PATH="$PATH:/root/.dotnet/tools"
 #         dotnet tool install --tool-path . dotnetsay
       - name: Restore dotnet packages
         run: dotnet restore src/aws-csharp.csproj
