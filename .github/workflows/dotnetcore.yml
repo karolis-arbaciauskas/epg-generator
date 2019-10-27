@@ -9,7 +9,6 @@ jobs:
   build:
     name: build
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v1
       - name: Setup .NET Core
@@ -18,28 +17,28 @@ jobs:
           dotnet-version: 2.2.108
       - name: Install Amazon.Lambda.Tools
         run: dotnet tool install --tool-path ~/.dotnetamazon Amazon.Lambda.Tools
-    # - name: Restore "TV guide" dotnet packages
-    #   run: dotnet restore src/aws-csharp.csproj
-    # - name: Package "TV guide"
-    #   run: ~/.dotnetamazon/dotnet-lambda package --project-location src --configuration release --framework netcoreapp2.1 --output-package bin/release/netcoreapp2.1/epg.zip
-    # - name: Upload epg package
-    #   uses: actions/upload-artifact@v1
-    #   with:
-    #     name: epg-package
-    #     path: bin/release/netcoreapp2.1/epg.zip
-  # deploy:
-  #   name: deploy
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v1
-  #     - name: Setup node
-  #     - uses: actions/setup-node@master
-  #     - name: Install serverless
-  #       run: npm i -g serverless
-  #     - name: Download epg package
-  #       uses: actions/download-artifact@v1
-  #       with:
-  #         name: epg-package
-  #     - name: Publish
-  #       run: sls deploy
+      - name: Restore "TV guide" dotnet packages
+        run: dotnet restore src/aws-csharp.csproj
+      - name: Package "TV guide"
+        run: ~/.dotnetamazon/dotnet-lambda package --project-location src --configuration release --framework netcoreapp2.1 --output-package bin/release/netcoreapp2.1/epg.zip
+      - name: Upload epg package
+        uses: actions/upload-artifact@v1
+        with:
+          name: epg-package
+          path: bin/release/netcoreapp2.1/epg.zip
+  deploy:
+    name: deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup node
+      - uses: actions/setup-node@master
+      - name: Install serverless
+        run: npm i -g serverless
+      - name: Download epg package
+        uses: actions/download-artifact@v1
+        with:
+          name: epg-package
+      - name: Publish
+        run: sls deploy
