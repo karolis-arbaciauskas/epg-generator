@@ -6,10 +6,10 @@ on:
       - master
 
 jobs:
-  build:
+  install .net dependencies:
     runs-on: ubuntu-latest
 
-    install .net dependencies:
+    steps:
       - uses: actions/checkout@v1
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
