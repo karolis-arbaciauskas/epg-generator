@@ -17,10 +17,10 @@ jobs:
       - name: Restore dotnet packages
         run: dotnet restore src/aws-csharp.csproj
       - name: ls files 0
-        run: ls -la ~/.dotnet/tools
+        run: find $HOME -type d -name tools
 #       - name: ls files 1
 #         run: ls -la /home/runner/
 #       - name: ls files 2
 #         run: ls -la /home/runner/.templateengine/
-      - name: Package for lambda
-        run: dotnet-lambda package --project-location src --configuration release --framework netcoreapp2.1 --output-package bin/release/netcoreapp2.1/epg.zip
+#       - name: Package for lambda
+#         run: dotnet-lambda package --project-location src --configuration release --framework netcoreapp2.1 --output-package bin/release/netcoreapp2.1/epg.zip
