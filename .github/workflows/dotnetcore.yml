@@ -1,6 +1,9 @@
-name: .NET Core
+name: TV guide pipeline
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
@@ -13,9 +16,8 @@ jobs:
         with:
           dotnet-version: 2.2.108
       - name: Install Amazon.Lambda.Tools
-        run: dotnet tool install --tool-path ~/.dotnetamazon Amazon.Lambda.Tools # && export PATH="$PATH:/root/.dotnet/tools"
-#         dotnet tool install --tool-path . dotnetsay
-      - name: Restore dotnet packages
+        run: dotnet tool install --tool-path ~/.dotnetamazon Amazon.Lambda.Tools
+      - name: Restore "TV guide" dotnet packages
         run: dotnet restore src/aws-csharp.csproj
-      - name: Package for lambda
+      - name: Package "TV guide"
         run: ~/.dotnetamazon/dotnet-lambda package --project-location src --configuration release --framework netcoreapp2.1 --output-package bin/release/netcoreapp2.1/epg.zip
