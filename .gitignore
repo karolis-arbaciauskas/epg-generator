@@ -245,5 +245,8 @@ _Pvt_Extensions
 # JetBrains Rider C# IDE
 .idea*
 
-# Serverless directories
+# Serverless directory
 .serverless
+
+# vscode directories
+.vscode
