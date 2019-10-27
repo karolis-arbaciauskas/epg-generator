@@ -12,23 +12,10 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 2.2.108
-      - name: Install dotnet lambda dependency
-        run: dotnet new --install Amazon.Lambda.Templates # && export PATH="$PATH:/root/.dotnet/tools"
-      - name: ls 0
-        run: ls -la $DOTNET_ROOT/dotnet
-      - name: ls 1
-        run: ls -la $DOTNET_ROOT/host
-      - name: ls 2
-        run: ls -la $DOTNET_ROOT/sdk
-      - name: ls 3
-        run: ls -la $DOTNET_ROOT/shared
-#       - name: Restore dotnet packages
-#         run: dotnet restore src/aws-csharp.csproj
-#       - name: ls files 0
-#         run: find $HOME -type d -name tools
-#       - name: ls files 1
-#         run: ls -la /home/runner/
-#       - name: ls files 2
-#         run: ls -la /home/runner/.templateengine/
-#       - name: Package for lambda
-#         run: dotnet-lambda package --project-location src --configuration release --framework netcoreapp2.1 --output-package bin/release/netcoreapp2.1/epg.zip
+      - name: Install Amazon.Lambda.Tools
+        run: dotnet tool install -g Amazon.Lambda.Tools # && export PATH="$PATH:/root/.dotnet/tools"
+#         dotnet tool install --tool-path . dotnetsay
+      - name: Restore dotnet packages
+        run: dotnet restore src/aws-csharp.csproj
+      - name: Package for lambda
+        run: dotnet-lambda package --project-location src --configuration release --framework netcoreapp2.1 --output-package bin/release/netcoreapp2.1/epg.zip
