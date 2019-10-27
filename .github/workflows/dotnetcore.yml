@@ -15,7 +15,13 @@ jobs:
       - name: Install dotnet lambda dependency
         run: dotnet new --install Amazon.Lambda.Templates # && export PATH="$PATH:/root/.dotnet/tools"
       - name: ls 0
-        run: ls -la $DOTNET_ROOT
+        run: ls -la $DOTNET_ROOT/dotnet
+      - name: ls 1
+        run: ls -la $DOTNET_ROOT/host
+      - name: ls 2
+        run: ls -la $DOTNET_ROOT/sdk
+      - name: ls 3
+        run: ls -la $DOTNET_ROOT/shared
 #       - name: Restore dotnet packages
 #         run: dotnet restore src/aws-csharp.csproj
 #       - name: ls files 0
