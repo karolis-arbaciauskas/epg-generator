@@ -1,4 +1,4 @@
-name: Build
+name: Build & Deploy
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  build-dot-net:
+  build and deploy lambda:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,20 +21,9 @@ jobs:
         run: dotnet restore src/aws-csharp.csproj
       - name: Package "TV guide"
         run: ~/.dotnetamazon/dotnet-lambda package --project-location src --configuration release --framework netcoreapp2.1 --output-package bin/release/netcoreapp2.1/epg.zip
-  # build-npm:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Setup node
-  #     - uses: actions/setup-node@master
-  #     - name: Install serverless
-  #       run: npm i -g serverless
-  #     - name: install local dependencies
-  #       run: npm ci
-  # deploy:
-  #   runs-on: ubuntu-latest
-  #   needs: build
-  #   steps:
-  #     - name: Install serverless
-  #       run: npm i -g serverless
-  #     - name: install local dependencies
-  #       run: npm ci
+      - name: Setup node
+      - uses: actions/setup-node@master
+      - name: Install serverless
+        run: npm i -g serverless
+      - name: Publish
+        run: sls deploy
