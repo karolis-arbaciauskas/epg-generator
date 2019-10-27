@@ -1,4 +1,4 @@
-![](https://github.com/Acidfabric/epg-generator/workflows/TV%20guide%20pipeline/badge.svg)
+![](https://github.com/Acidfabric/epg-generator/workflows/Build%20&%20Deploy/badge.svg)
 
 # EPG generator
 
