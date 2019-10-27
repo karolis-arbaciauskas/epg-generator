@@ -33,7 +33,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Setup node
-      - uses: actions/setup-node@master
+        uses: actions/setup-node@master
       - name: Install serverless
         run: npm i -g serverless
       - name: Download epg package
