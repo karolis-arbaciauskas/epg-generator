@@ -1,3 +1,5 @@
+![](https://github.com/Acidfabric/epg-generator/workflows/TV%20guide%20pipeline/badge.svg)
+
 # EPG generator
 
 Simple EPG generator (at this time it only can parse tv guides from tv24.lt website) which runs on AWS (Amazon web services) lambda. Infrastructure are deployable trough [serverless framework](https://serverless.com).
