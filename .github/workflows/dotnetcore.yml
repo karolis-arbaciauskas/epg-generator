@@ -21,16 +21,15 @@ jobs:
         run: dotnet restore src/aws-csharp.csproj
       - name: Package "TV guide"
         run: ~/.dotnetamazon/dotnet-lambda package --project-location src --configuration release --framework netcoreapp2.1 --output-package bin/release/netcoreapp2.1/epg.zip
-  build-npm:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Setup node
-      - uses: actions/setup-node@master
-      - name: Install serverless
-        run: npm i -g serverless
-      - name: install local dependencies
-        run: npm ci
+  # build-npm:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Setup node
+  #     - uses: actions/setup-node@master
+  #     - name: Install serverless
+  #       run: npm i -g serverless
+  #     - name: install local dependencies
+  #       run: npm ci
   # deploy:
   #   runs-on: ubuntu-latest
   #   needs: build
