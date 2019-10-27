@@ -13,9 +13,9 @@ jobs:
         with:
           dotnet-version: 2.2.108
       - name: Install dotnet lambda dependency
-        run: dotnet new --install Amazon.Lambda.Templates::3.9.0 # && export PATH="$PATH:/root/.dotnet/tools"
-      - name: printenv
-        run: printenv
+        run: dotnet new --install Amazon.Lambda.Templates # && export PATH="$PATH:/root/.dotnet/tools"
+      - name: ls 0
+        run: ls -la $DOTNET_ROOT
 #       - name: Restore dotnet packages
 #         run: dotnet restore src/aws-csharp.csproj
 #       - name: ls files 0
