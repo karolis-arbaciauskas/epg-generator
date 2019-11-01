@@ -1,16 +1,16 @@
 using Amazon.S3;
-using EpgGenerator;
-using EpgGenerator.Configuration;
-using EpgGenerator.HttpFactoryClient;
-using EpgGenerator.Models;
-using EpgGenerator.S3Uploader;
-using EpgGenerator.Tv24EpgGenerator;
+using awscsharp;
+using awscsharp.Configuration;
+using awscsharp.HttpFactoryClient;
+using awscsharp.Models;
+using awscsharp.S3Uploader;
+using awscsharp.Tv24EpgGenerator;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace TV24ProgramGenerator
+namespace AwsDotnetCsharp
 {
-  public class Program
+  public class Handler
   {
     public static void Main()
     {
@@ -20,7 +20,7 @@ namespace TV24ProgramGenerator
       serviceProvider.GetService<Service>().Run();
     }
 
-    private static IServiceCollection ConfigureServices(IConfigurationRoot root)
+    private static IServiceCollection ConfigureServices(IConfiguration root)
     {
       IServiceCollection services = new ServiceCollection();
       services

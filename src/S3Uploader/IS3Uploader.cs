@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace EpgGenerator.S3Uploader
+namespace awscsharp.S3Uploader
 {
     public interface IS3Uploader
     {

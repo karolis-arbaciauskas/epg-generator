@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace EpgGenerator.Models
+namespace awscsharp.Models
 {
     public class RootObject
     {
