@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace awscsharp.HttpFactoryClient
+namespace EpgGenerator.HttpFactoryClient
 {
     public class ApiException : Exception
     {

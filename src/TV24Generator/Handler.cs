@@ -1,14 +1,14 @@
 using Amazon.S3;
-using awscsharp;
-using awscsharp.Configuration;
-using awscsharp.HttpFactoryClient;
-using awscsharp.Models;
-using awscsharp.S3Uploader;
-using awscsharp.Tv24EpgGenerator;
+using EpgGenerator;
+using EpgGenerator.Configuration;
+using EpgGenerator.HttpFactoryClient;
+using EpgGenerator.Models;
+using EpgGenerator.S3Uploader;
+using EpgGenerator.Tv24EpgGenerator;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AwsDotnetCsharp
+namespace TV24EpgGenerator
 {
   public class Handler
   {

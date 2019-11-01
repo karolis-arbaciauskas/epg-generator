@@ -7,5 +7,5 @@ then
   apt -qq -y install zip
 fi
 
-dotnet restore src/aws-csharp.csproj
-dotnet lambda package --project-location src --configuration release --framework netcoreapp2.1 --output-package bin/release/netcoreapp2.1/epg.zip
+dotnet restore src/TV24Generator/TV24Generator.csproj
+dotnet lambda package --project-location src/TV24Generator --configuration release --framework netcoreapp2.1 --output-package bin/release/netcoreapp2.1/epg.zip

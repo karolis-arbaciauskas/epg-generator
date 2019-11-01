@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace awscsharp.HttpFactoryClient
+namespace EpgGenerator.HttpFactoryClient
 {
     public interface IHttpFactoryClient
     {

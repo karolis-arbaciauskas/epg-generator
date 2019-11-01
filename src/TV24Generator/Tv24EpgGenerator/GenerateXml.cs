@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
-using awscsharp.Models;
+using EpgGenerator.Models;
 
-namespace awscsharp.Tv24EpgGenerator
+namespace EpgGenerator.Tv24EpgGenerator
 {
     public static class GenerateXml
     {

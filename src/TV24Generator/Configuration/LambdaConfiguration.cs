@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Microsoft.Extensions.Configuration;
 
-namespace awscsharp.Configuration
+namespace EpgGenerator.Configuration
 {
     public class LambdaConfiguration : ILambdaConfiguration
     {

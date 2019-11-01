@@ -2,7 +2,7 @@
 using System.Text;
 using System.Xml.Linq;
 
-namespace awscsharp.Utils
+namespace EpgGenerator.Utils
 {
     public class XmlSerializer
     {

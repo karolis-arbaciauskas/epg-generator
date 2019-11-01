@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace awscsharp.Tv24EpgGenerator
+namespace EpgGenerator.Tv24EpgGenerator
 {
     public interface ITv24EpgGenerator
     {
