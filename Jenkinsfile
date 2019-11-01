@@ -14,8 +14,10 @@ pipeline {
             }
         }
         stage('approval') {
-            timeout(time: 30, unit: 'DAYS') {
-                input message: "Start second rollout ?"
+            steps {
+                timeout(time: 30, unit: 'DAYS') {
+                    input message: "Start second rollout ?"
+                }
             }
         }
         stage('test') {
