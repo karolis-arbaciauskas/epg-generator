@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TV24Generator", "src\TV24Generator\TV24Generator.csproj", "{D63666C2-A325-4E3A-88D4-9D3F6177672C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TV24Generator.Tests", "src\TV24Generator.Tests\TV24Generator.Tests.csproj", "{912268D2-B56E-4A8E-AE4B-1D819295B5F3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,8 +15,13 @@ Global
 		{D63666C2-A325-4E3A-88D4-9D3F6177672C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D63666C2-A325-4E3A-88D4-9D3F6177672C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D63666C2-A325-4E3A-88D4-9D3F6177672C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{912268D2-B56E-4A8E-AE4B-1D819295B5F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{912268D2-B56E-4A8E-AE4B-1D819295B5F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{912268D2-B56E-4A8E-AE4B-1D819295B5F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{912268D2-B56E-4A8E-AE4B-1D819295B5F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D63666C2-A325-4E3A-88D4-9D3F6177672C} = {16C3C6AB-0D4A-4674-A5E6-5EA3C3E0CBCD}
+		{912268D2-B56E-4A8E-AE4B-1D819295B5F3} = {048B252B-3EC7-4C48-89B2-6F424A01BDD9}
 	EndGlobalSection
 EndGlobal
