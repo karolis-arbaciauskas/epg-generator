@@ -17,9 +17,9 @@ jobs:
           dotnet-version: 2.2.108
       - name: Install Amazon.Lambda.Tools
         run: dotnet tool install --tool-path ~/.dotnetamazon Amazon.Lambda.Tools
-      - name: Restore "TV guide" dotnet packages
-        run: dotnet restore src/aws-csharp.csproj
-      - name: Package "TV guide"
+      - name: Restore dotnet packages
+        run: dotnet restore src/TV24Generator.csproj
+      - name: Package
         run: ~/.dotnetamazon/dotnet-lambda package --project-location src --configuration release --framework netcoreapp2.1 --output-package bin/release/netcoreapp2.1/epg.zip
       - name: Upload epg package
         uses: actions/upload-artifact@v1
