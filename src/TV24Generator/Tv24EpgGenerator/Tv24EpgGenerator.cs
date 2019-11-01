@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using awscsharp.HttpFactoryClient;
-using awscsharp.Models;
-using awscsharp.S3Uploader;
-using awscsharp.Utils;
+using EpgGenerator.HttpFactoryClient;
+using EpgGenerator.Models;
+using EpgGenerator.S3Uploader;
+using EpgGenerator.Utils;
 using Microsoft.Extensions.Options;
-using static awscsharp.Utils.XmlSerializer;
+using static EpgGenerator.Utils.XmlSerializer;
 
-namespace awscsharp.Tv24EpgGenerator
+namespace EpgGenerator.Tv24EpgGenerator
 {
   public class Tv24EpgGenerator : ITv24EpgGenerator
   {

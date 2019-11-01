@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
-    <AssemblyName>CsharpHandlers</AssemblyName>
-    <PackageId>aws-csharp</PackageId>
+    <AssemblyName>TV24GeneratorHandlers</AssemblyName>
+    <PackageId>TV24Generator</PackageId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
       <LangVersion>7.3</LangVersion>

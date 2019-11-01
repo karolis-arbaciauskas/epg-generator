@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace awscsharp.Models
+namespace EpgGenerator.Models
 {
     [JsonObject("tv24Config")]
     public class Tv24Config
