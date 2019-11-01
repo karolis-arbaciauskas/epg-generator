@@ -1,13 +1,13 @@
 ﻿using System.IO;
 using Microsoft.Extensions.Configuration;
 
-namespace awscsharp.Configuration
+namespace EpgGenerator.Configuration
 {
     public class LambdaConfiguration : ILambdaConfiguration
     {
         public static IConfigurationRoot Configuration => new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .AddJsonFile("appsettings.json", false, true)
             .AddEnvironmentVariables()
             .Build();
 

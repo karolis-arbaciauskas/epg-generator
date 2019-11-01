@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace awscsharp.Configuration
+namespace EpgGenerator.Configuration
 {
     public interface ILambdaConfiguration
     {

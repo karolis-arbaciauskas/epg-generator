@@ -1,5 +1,6 @@
 ﻿using System;
-namespace awscsharp.Utils
+
+namespace EpgGenerator.Utils
 {
     public static class DateTimeFormatter
     {

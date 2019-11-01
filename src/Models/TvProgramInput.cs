@@ -1,4 +1,4 @@
-﻿namespace awscsharp.Models
+﻿namespace EpgGenerator.Models
 {
     public class Category
     {
@@ -49,5 +49,5 @@
         public ChannelInput Channel { get; set; }
         public string Series_url { get; set; }
         public bool? Issport { get; set; }
-    }    
+    }
 }
