@@ -2,21 +2,21 @@
 using System.Threading.Tasks;
 using Amazon.S3;
 using Amazon.S3.Model;
-using awscsharp.Models;
+using EpgGenerator.Models;
 using Microsoft.Extensions.Options;
 
-namespace awscsharp.S3Uploader
+namespace EpgGenerator.S3Uploader
 {
     public class S3Uploader : IS3Uploader
     {
-        private IAmazonS3 _client { get; set; }
-        private IOptions<AwsConfig> _config { get; set; }
-
         public S3Uploader(IAmazonS3 client, IOptions<AwsConfig> config)
         {
             _config = config;
             _client = client;
         }
+
+        private IAmazonS3 _client { get; }
+        private IOptions<AwsConfig> _config { get; }
 
         public async Task WritingAnObjectAsync(string generatedEpg)
         {
@@ -33,7 +33,6 @@ namespace awscsharp.S3Uploader
                 uploadRequest.Metadata.Add("x-amz-meta-generatedAt", DateTime.Now.ToShortDateString());
 
                 await _client.PutObjectAsync(uploadRequest);
-
             }
             catch (AmazonS3Exception e)
             {

@@ -1,10 +1,9 @@
 ﻿using System.IO;
 using System.Net.Http;
-using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace awscsharp.HttpFactoryClient
+namespace EpgGenerator.HttpFactoryClient
 {
     public class HttpFactoryClient : IHttpFactoryClient
     {
@@ -35,7 +34,7 @@ namespace awscsharp.HttpFactoryClient
 
                 throw new ApiException
                 {
-                    StatusCode = (int)response.StatusCode,
+                    StatusCode = (int) response.StatusCode,
                     Content = content
                 };
             }
@@ -43,10 +42,7 @@ namespace awscsharp.HttpFactoryClient
 
         private static T DeserializeJsonFromStream<T>(Stream stream)
         {
-            if (stream == null || stream.CanRead == false)
-            {
-                return default;
-            }
+            if (stream == null || stream.CanRead == false) return default;
 
             using (var streamReader = new StreamReader(stream))
             using (var jsonTextReader = new JsonTextReader(streamReader))

@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
-using System.Xml.Linq;
 
-namespace awscsharp.S3Uploader
+namespace EpgGenerator.S3Uploader
 {
     public interface IS3Uploader
     {
