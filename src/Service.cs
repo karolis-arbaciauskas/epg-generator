@@ -1,7 +1,7 @@
 ﻿using System;
-using EpgGenerator.Tv24EpgGenerator;
+using awscsharp.Tv24EpgGenerator;
 
-namespace EpgGenerator
+namespace awscsharp
 {
     public class Service
     {

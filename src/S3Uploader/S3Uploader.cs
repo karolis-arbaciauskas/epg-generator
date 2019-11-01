@@ -2,10 +2,10 @@
 using System.Threading.Tasks;
 using Amazon.S3;
 using Amazon.S3.Model;
-using EpgGenerator.Models;
+using awscsharp.Models;
 using Microsoft.Extensions.Options;
 
-namespace EpgGenerator.S3Uploader
+namespace awscsharp.S3Uploader
 {
     public class S3Uploader : IS3Uploader
     {

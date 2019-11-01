@@ -30,7 +30,7 @@ package:
 
 functions:
   epgGenerator:
-    handler: EpgGenerator::TV24ProgramGenerator.Program::Main
+    handler: CsharpHandlers::AwsDotnetCsharp.Handler::Main
     timeout: 100
     package:
       # artifact: bin/release/netcoreapp2.1/epg.zip

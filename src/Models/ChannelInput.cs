@@ -1,4 +1,4 @@
-﻿namespace EpgGenerator.Models
+﻿namespace awscsharp.Models
 {
     public class ChannelInput
     {
