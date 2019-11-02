@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'mcr.microsoft.com/dotnet/core/sdk:3.0'
+            image 'mcr.microsoft.com/dotnet/core/runtime:3.0'
         }
     }
     environment {
@@ -13,16 +13,16 @@ pipeline {
                 sh 'dotnet restore'
             }
         }
-        stage('approval') {
-            steps {
-                timeout(time: 30, unit: 'DAYS') {
-                    input message: "Start second rollout ?"
-                }
-            }
-        }
         stage('test') {
             steps {
                 sh 'dotnet test'
+            }
+        }
+        stage('approval') {
+            steps {
+                timeout(time: 30, unit: 'DAYS') {
+                    input message: "Pre-deploy check"
+                }
             }
         }
     }
