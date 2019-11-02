@@ -15,7 +15,7 @@ pipeline {
         }
         stage('test') {
             steps {
-                sh 'dotnet test'
+                sh 'dotnet test --test-adapter-path:. --logger:xunit'
             }
         }
         stage('approval') {
