@@ -14,10 +14,10 @@ pipeline {
             }
         }
         stage('test') {
-            steps {
-                sh 'dotnet test -l:trx'
-                step([$class: 'MSTestPublisher', testResultsFile:"**/*.trx", failOnError: true, keepLongStdio: true])
-            }
+            // steps {
+            //     sh 'dotnet test -l:trx'
+            // }
+           step([$class: 'MSTestPublisher', testResultsFile:"**/*.trx", failOnError: true, keepLongStdio: true])
         }
         stage('approval') {
             steps {
