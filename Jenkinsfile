@@ -15,7 +15,7 @@ pipeline {
         }
         stage('test') {
             steps {
-                // sh 'dotnet test -l:trx'
+                sh 'dotnet test -l:trx'
                 step([$class: 'MSTestPublisher', testResultsFile:"**/*.trx", failOnError: true, keepLongStdio: true])
             }
         }

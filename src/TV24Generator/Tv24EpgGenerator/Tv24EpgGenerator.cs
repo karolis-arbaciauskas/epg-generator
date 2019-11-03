@@ -8,7 +8,6 @@ using EpgGenerator.Models;
 using EpgGenerator.S3Uploader;
 using EpgGenerator.Utils;
 using Microsoft.Extensions.Options;
-using static EpgGenerator.Utils.XmlSerializer;
 
 namespace EpgGenerator.Tv24EpgGenerator
 {
@@ -93,8 +92,10 @@ namespace EpgGenerator.Tv24EpgGenerator
 
       for (var i = 0; i < _numOfDays; i++)
       {
-        var tasks = channelsGroups.Select(channelsGroup =>
-            _httpClientFactory.GenerateStreamFromSource<T>($"{_baseUrl}/{channelsGroup}/{date:dd-MM-yyyy}"));
+        var tasks = channelsGroups.Select(channelsGroup => _httpClientFactory.GenerateStreamFromSource<T>(
+          $"{_baseUrl}/{channelsGroup}/{date:dd-MM-yyyy}", 
+          JsonConverter.DeserializeFromStream<T>
+        ));
         tvGuides.AddRange(await Task.WhenAll(tasks));
         date = date.AddDays(1);
       }
